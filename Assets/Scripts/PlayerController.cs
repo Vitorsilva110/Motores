@@ -28,17 +28,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(new Vector2(-Speed * 15, transform.localPosition.y));
-            if (Input.GetKey(KeyCode.B))
-            {
-                float originalGravity = rb.gravityScale;
-                rb.gravityScale = 0f;
-                rb.AddForce(new Vector2(-Speed * 2, transform.position.y), ForceMode2D.Impulse);
-                // HP-=10.0f;
-                // Debug.Log(HP);
-                rb.gravityScale = originalGravity;
-                rb.velocity = Vector2.zero;
-            }
-            else if (Input.GetKeyDown(KeyCode.W) && !isJumping)
+            if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
             {
                 rb.AddForce(new Vector2(transform.localPosition.x, Jump * 130), ForceMode2D.Force);
                 isJumping = true;
@@ -48,43 +38,16 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
         {
             rb.AddForce(new Vector2(Speed * 15, transform.localPosition.y));
-            if (Input.GetKey(KeyCode.B))
-            {
-                float originalGravity = rb.gravityScale;
-                rb.gravityScale = 0f;
-                rb.AddForce(new Vector2(Speed * 2, transform.position.y), ForceMode2D.Impulse);
-                // HP-=10.0f;
-                // Debug.Log(HP);
-                rb.gravityScale = originalGravity;
-                // rb.velocity = Vector2.zero;
-            }
-            else if (Input.GetKeyDown(KeyCode.W) && !isJumping)
+            if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
             {
                 rb.AddForce(new Vector2(transform.localPosition.x, Jump * 130), ForceMode2D.Force);
                 isJumping = true;
                 rb.AddForce(new Vector2(transform.position.x, Jump * 60));
             }
         }
-        else if (Input.GetKey(KeyCode.W) && !isJumping)
+        else if (Input.GetKey(KeyCode.Space) && !isJumping)
         {
             rb.AddForce(new Vector2(transform.position.x, Jump * 130), ForceMode2D.Force);
-            isJumping = true;
-        }
-        else if (Input.GetKey(KeyCode.Q) && !isJumping)
-        {
-            rb.AddForce(new Vector2(-Speed * 90, Jump * 130), ForceMode2D.Force);
-            isJumping = true;
-        }
-        else if (Input.GetKey(KeyCode.E) && !isJumping)
-        {
-            if (Input.GetKey(KeyCode.B))
-            {
-                float originalGravity = rb.gravityScale;
-                rb.gravityScale = 0f;
-                rb.AddForce(new Vector2(Speed * 5, Jump * 3), ForceMode2D.Impulse);
-                rb.gravityScale = originalGravity;
-            }
-            rb.AddForce(new Vector2(Speed * 90, Jump * 130), ForceMode2D.Force);
             isJumping = true;
         }
     }
